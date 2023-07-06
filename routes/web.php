@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClassController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,13 +31,25 @@ Route::get('logout', [AuthController::class, 'logout']);
 
 Route::group(['middleware' => 'admin'], function (){
     
+    // admin -> dashboard routes 
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
+
+    // admin -> admin routes
     Route::get('admin/admin/list', [AdminController::class, 'list']);
     Route::get('admin/admin/add', [AdminController::class, 'add']);
     Route::post('admin/admin/add', [AdminController::class, 'insert']);
     Route::get('admin/admin/edit/{id}', [AdminController::class, 'edit']);
     Route::post('admin/admin/edit/{id}', [AdminController::class, 'update']);
     Route::post('admin/admin/delete/{id}', [AdminController::class, 'delete']);
+
+    // admin -> class routes 
+    Route::get('admin/classroom/list', [ClassController::class, 'list']);
+    Route::get('admin/classroom/add', [ClassController::class, 'add']);
+    Route::post('admin/classroom/add', [ClassController::class, 'insert']);
+    Route::get('admin/classroom/edit/{id}', [ClassController::class, 'edit']);
+    Route::post('admin/classroom/edit/{id}', [ClassController::class, 'update']);
+    Route::post('admin/classroom/delete/{id}', [ClassController::class, 'delete']);
+
     
     // Route::get('admin/admin/list', function () {
     //     return view('admin.admin.list');
