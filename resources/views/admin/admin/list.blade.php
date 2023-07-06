@@ -63,6 +63,9 @@
                     @endforeach
                   </tbody>
                 </table>
+                <div style="padding: 10px; float: right ">
+                  {!! $getRecord->appends(Request::except('page'))->links() !!}
+                </div>
               </div>
               <!-- /.card-body -->
             </div>

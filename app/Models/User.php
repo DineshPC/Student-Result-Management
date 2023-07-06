@@ -38,7 +38,7 @@ class User extends Authenticatable
         return self::select('users.*')
                         ->where('user_type', '=', '1')
                         ->orderBy('id', 'desc')
-                        ->get();   
+                        ->paginate(1);
     }
 
     static function getSingle($id){
