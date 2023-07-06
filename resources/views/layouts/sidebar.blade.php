@@ -38,7 +38,15 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/kanban.html" class="nav-link ">
+            <a href="{{URL('admin/classroom/list')}}" class="nav-link @if(Request::segment(2) == 'classroom') active @endif">
+              <i class="nav-icon fas fa-user-circle "></i>  
+              <p>
+                Classroom
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{URL('admin/admin/list')}}" class="nav-link @if(Request::segment(2) == 'student') active @endif">
               <i class="nav-icon fas fa-user-circle "></i>  
               <p>
                 Student
@@ -46,7 +54,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/kanban.html" class="nav-link">
+            <a href="{{URL('admin/admin/list')}}" class="nav-link @if(Request::segment(2) == 'teacher') active @endif">
               <i class="nav-icon fas fa-user-circle "></i>
               <p>
                 Teacher
