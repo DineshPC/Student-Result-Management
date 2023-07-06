@@ -31,6 +31,7 @@
                   <div class="form-group">
                     <label>Email</label>
                     <input type="email" class="form-control" name="email" value="{{ $getRecord->email }}" placeholder="Enter email">
+                    @include('_message')
                   </div>
                   <div class="form-group">
                     <label>Password</label><span class="text-danger"> ** ( If you want to change password, then enter a new password, otherwise don't do anything in the password field. ) **</span>

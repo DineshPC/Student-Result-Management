@@ -57,14 +57,23 @@ class AdminController extends Controller
 
     public function update($id , Request $request){
 
-        $user = User::getSingle($id);
-            $user-> name = trim($request->name);
-            $user-> email = trim($request->email);
-            if (!empty($request->password)){
-                $user-> password = Hash::make($request->password);
+            // request()-> validate([
+            //     'email' => 'required|email|unique:users,email,'.$id
+            // ]);
+
+            $user = User::getSingle($id);                       // get the user old data
+            $user-> name = trim($request->name);                // set the name
+            $user-> email = trim($request->email);              // set  the email
+            $checkEmail = User::checkEmailExists($user->email); // check the email if already exists
+            if($checkEmail == false){
+                if (!empty($request->password)){                    // check if the password is empty or not
+                $user-> password = Hash::make($request->password);  // set the password in Hash format
+                }
+                $user-> save();                                     // save the user data
+                return redirect('admin/admin/list')->with('success', "Admin Successfully Updated");
+            }else{
+                return redirect()->back()->with('error', "The new email has already been taken");
             }
-            $user-> save();
-            return redirect('admin/admin/list')->with('success', "Admin Successfully Updated");
     }
 
     public function delete($id , Request $request){
