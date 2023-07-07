@@ -50,6 +50,12 @@ Route::group(['middleware' => 'admin'], function (){
     Route::post('admin/classroom/edit/{id}', [ClassController::class, 'update']);
     Route::post('admin/classroom/delete/{id}', [ClassController::class, 'delete']);
 
+    Route::get('admin/teacher/list', [AdminController::class, 'listTeacher']);
+    Route::get('admin/teacher/add', [AdminController::class, 'addTeacher']);
+    Route::post('admin/teacher/add', [AdminController::class, 'addNewTeacher']);
+    Route::get('admin/teacher/edit/{id}', [AdminController::class, 'editTeacher']);
+    Route::post('admin/teacher/edit/{id}', [AdminController::class, 'updateTeacher']);
+    Route::post('admin/teacher/delete/{id}', [AdminController::class, 'delete']);
     
     // Route::get('admin/admin/list', function () {
     //     return view('admin.admin.list');

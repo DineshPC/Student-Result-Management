@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1>Add New Admin Form</h1>
+            <h1>Add New Teacher Form</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -43,7 +43,7 @@
 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
-                  <a href="{{url('admin/admin/list')}}" class="btn btn-secondary">Cancel</a>
+                  <a href="{{url('admin/teacher/list')}}" class="btn btn-secondary">Cancel</a>
                 </div>
               </form>
             </div>
