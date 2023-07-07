@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1>Add New Admin Form</h1>
+            <h1>Edit Teacher Details</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -18,32 +18,31 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-          @include('_message')
             <!-- general form elements -->
             <div class="card card-primary">
-
               <!-- form start -->
-              <form method="post" action="{{ url('admin/teacher/add') }}">
+              <form method="post" action="">
                     {{ csrf_field()}}
                 <div class="card-body">
                   <div class="form-group">
                     <label>Name</label>
-                    <input type="name" class="form-control" name="name" required placeholder="Enter name">
+                    <input type="name" class="form-control" name="name" value=" {{ $getRecord->name }}" placeholder="Enter name">
                   </div>
                   <div class="form-group">
                     <label>Email</label>
-                    <input type="email" class="form-control" name="email" required placeholder="Enter email">
+                    <input type="email" class="form-control" name="email" value="{{ $getRecord->email }}" placeholder="Enter email">
+                    @include('_message')
                   </div>
                   <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" name="password" required placeholder="Password">
+                    <label>Password</label><span class="text-danger"> ** ( If you want to change password, then enter a new password, otherwise don't do anything in the password field. ) **</span>
+                    <input type="text" class="form-control" name="password"  placeholder="Password">
                   </div>
                 </div>  
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <a href="{{url('admin/admin/list')}}" class="btn btn-secondary">Cancel</a>
+                  <button type="submit" class="btn btn-primary">Update</button>
+                  <a href="{{url('admin/teacher/list')}}" class="btn btn-secondary">Cancel</a>
                 </div>
               </form>
             </div>

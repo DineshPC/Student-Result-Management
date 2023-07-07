@@ -38,7 +38,14 @@ class User extends Authenticatable
         return self::select('users.*')
                         ->where('user_type', '=', '1')
                         ->orderBy('id', 'desc')
-                        ->paginate(1);
+                        ->paginate(10);
+    }
+
+    static function getTeacher(){
+        return self::select('users.*')
+                        ->where('user_type', '=', '2')
+                        ->orderBy('id', 'desc')
+                        ->paginate(10);
     }
 
     static function getSingle($id){
@@ -46,8 +53,8 @@ class User extends Authenticatable
     }
 
     static function checkEmailExists($email){
-        $admin = self::where('email', $email)->first();
-        return !is_null($admin); // Returns true if email exists, false otherwise
+        $existOrNot = self::where('email', $email)->first();
+        return !is_null($existOrNot); // Returns true if email exists, false otherwise
     }
 
     /**
