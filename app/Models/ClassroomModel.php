@@ -22,6 +22,11 @@ class ClassroomModel extends Model
         return self::find($id);
     }
 
+    static function getOnlyClass(){
+        return self::select('name')
+                     ->get();
+    }
+
     static function checkNameExists($classroomName){
         $checking = self::where('name', strtoupper($classroomName))->first();
         return !is_null($checking); // Returns true if classname exists, false otherwise

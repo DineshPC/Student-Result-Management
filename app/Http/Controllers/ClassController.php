@@ -48,6 +48,7 @@ class ClassController extends Controller
     public function edit($id){
 
         $data['getRecord'] = ClassroomModel::getSingle($id);
+        
 
         if (!empty($data['getRecord'])){
             return view('admin.classroom.edit', $data);
@@ -64,5 +65,5 @@ class ClassController extends Controller
             return redirect('admin/classroom/list')->with('success', "Classroom Successfully Deleted");
         }
         return false;
-}
+    }
 }
