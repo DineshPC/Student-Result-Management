@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1>Edit Subject Details</h1>
+            <h1>Edit Student Details</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -25,17 +25,17 @@
                     {{ csrf_field()}}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Subject Name</label>
+                    <label>Name</label>
                     <input type="name" class="form-control" name="name" value=" {{ $getRecord->name }}" placeholder="Enter name">
                   </div>
                   <div class="form-group">
-                    <label for="type">Type</label><br>
-                    <div class="col-md-4">
-                      <select class="form-select col-md-4" id="type" name="type">
-                        <option value="Theory" {{ $getRecord->type === 'Theory' ? 'selected' : '' }}>Theory</option>
-                        <option value="Practical" {{ $getRecord->type === 'Practical' ? 'selected' : '' }}>Practical</option>
-                      </select>
-                    </div>
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email" value="{{ $getRecord->email }}" placeholder="Enter email">
+                    @include('_message')
+                  </div>
+                  <div class="form-group">
+                    <label>Password</label><span class="text-danger"> ** ( If you want to change password, then enter a new password, otherwise don't do anything in the password field. ) **</span>
+                    <input type="text" class="form-control" name="password"  placeholder="Password">
                   </div>
                   <div class="form-group">
                     <label for="class">Class</label><br>
@@ -48,13 +48,13 @@
                         @endforeach
                       </select>
                     </div>
-                  </div>
+                  </div> 
                 </div>  
                 <!-- /.card-body -->
 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Update</button>
-                  <a href="{{url('admin/subjects/list')}}" class="btn btn-secondary">Cancel</a>
+                  <a href="{{url('admin/student/list')}}" class="btn btn-secondary">Cancel</a>
                 </div>
               </form>
             </div>

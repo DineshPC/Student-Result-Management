@@ -66,7 +66,14 @@ Route::group(['middleware' => 'admin'], function (){
     Route::get('admin/subjects/edit/{id}', [SubjectController::class, 'edit']);
     Route::post('admin/subjects/edit/{id}', [SubjectController::class, 'update']);
     Route::post('admin/subjects/delete/{id}', [SubjectController::class, 'delete']);
-    
+
+    // admin -> student routes
+    Route::get('admin/student/list', [AdminController::class, 'listStudent']);
+    Route::get('admin/student/add', [AdminController::class, 'addStudent']);
+    Route::post('admin/student/add', [AdminController::class, 'insertStudent']);
+    Route::get('admin/student/edit/{id}', [AdminController::class, 'editStudent']);
+    Route::post('admin/student/edit/{id}', [AdminController::class, 'updateStudent']);
+    Route::post('admin/student/delete/{id}', [AdminController::class, 'delete']);
     
 });
 
