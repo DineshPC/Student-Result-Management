@@ -38,18 +38,18 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{URL('admin/classroom/list')}}" class="nav-link @if(Request::segment(2) == 'classroom') active @endif">
-              <i class="nav-icon fas fa-user-circle "></i>  
-              <p>
-                Classroom
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
             <a href="{{URL('admin/teacher/list')}}" class="nav-link @if(Request::segment(2) == 'teacher') active @endif">
               <i class="nav-icon fas fa-user-circle "></i>
               <p>
                 Teacher
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{URL('admin/classroom/list')}}" class="nav-link @if(Request::segment(2) == 'classroom') active @endif">
+              <i class="nav-icon fas fa-user-circle "></i>  
+              <p>
+                Classroom
               </p>
             </a>
           </li>
@@ -62,7 +62,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{URL('admin/admin/list')}}" class="nav-link @if(Request::segment(2) == 'student') active @endif">
+            <a href="{{URL('admin/student/list')}}" class="nav-link @if(Request::segment(2) == 'student') active @endif">
               <i class="nav-icon fas fa-user-circle "></i>  
               <p>
                 Student

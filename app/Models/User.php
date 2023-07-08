@@ -48,6 +48,13 @@ class User extends Authenticatable
                         ->paginate(10);
     }
 
+    static function getStudent(){
+        return self::select('users.*')
+                        ->where('user_type', '=', '3')
+                        ->orderBy('id')
+                        ->paginate(10);
+    }
+
     static function getSingle($id){
         return self::find($id);
     }
