@@ -62,11 +62,10 @@
 <script src="{{URL('/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-  $.widget.bridge('uibutton', $.ui.button)
+  // $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{URL('/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-ChartJS
 <!-- <script src="{{URL('/plugins/chart.js/Chart.min.js')}}"></script> -->
 <!-- Sparkline -->
 <!-- <script src="{{URL('/plugins/sparklines/sparkline.js')}}"></script> -->

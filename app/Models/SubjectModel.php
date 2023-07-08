@@ -13,7 +13,8 @@ class SubjectModel extends Model
 
     static function getSubjects(){
         return self::select('subjects.*')
-                        ->get();
+                        // ->get();
+                        ->paginate(10);
     }
 
     static function getSingle($id){

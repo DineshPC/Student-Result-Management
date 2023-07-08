@@ -32,33 +32,39 @@
 
                 <!-- /.card-header -->
               <div class="card-body p-0">
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>id</th>
-                      <th>Subject Name</th>
-                      <th>Type</th>
-                      <th>Class</th>
-                      <th>Action</th>
-                    </tr>
-                    <tbody>
-                    @foreach($getRecord as $value)
-                    <tr>
-                      <td>{{ $value->id }}</td>
-                      <td>{{ $value->name }}</td>
-                      <td>{{ $value->type }}</td>
-                      <td>{{ $value->class }}</td>
-                      <td>
-                        <a href="{{ url('admin/subjects/edit', $value->id) }}" class="btn btn-primary">Edit</a>
-                        <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm-{{ $value->id }}').submit();" class="btn btn-danger">Delete</a>
-                        <form id="deleteForm-{{ $value->id }}" action="{{ url('admin/subjects/delete', $value->id) }}" method="POST" style="display: none;">
-                            @csrf
-                          </form>
-                      </td>
-                    </tr>   
-                    @endforeach
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>id</th>
+                        <th>Subject Name</th>
+                        <th>Type</th>
+                        <th>Class</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                      <tbody>
+                      @foreach($getRecord as $value)
+                      <tr>
+                        <td>{{ $value->id }}</td>
+                        <td>{{ $value->name }}</td>
+                        <td>{{ $value->type }}</td>
+                        <td>{{ $value->class }}</td>
+                        <td>
+                          <a href="{{ url('admin/subjects/edit', $value->id) }}" class="btn btn-primary">Edit</a>
+                          <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm-{{ $value->id }}').submit();" class="btn btn-danger">Delete</a>
+                          <form id="deleteForm-{{ $value->id }}" action="{{ url('admin/subjects/delete', $value->id) }}" method="POST" style="display: none;">
+                              @csrf
+                            </form>
+                        </td>
+                      </tr>   
+                      @endforeach
+                    </tbody>
+                  </table>
+                  <div style="float: right;" class="py-0 px-3">
+                    {!! $getRecord->appends(Request::except('page'))->links() !!}
+                  </div>
+                </div>
               </div>
               <!-- /.card-body -->
             </div>
