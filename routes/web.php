@@ -4,9 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\SubjectController;
-use App\Http\Controllers\resultController;
+use App\Http\Controllers\ResultController;
+use App\Http\Controllers\ResultTeacherController;
+use App\Http\Controllers\ResultStudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,11 +95,27 @@ Route::group(['middleware' => 'teacher'], function (){
 
     Route::get('teacher/dashboard', [DashboardController::class, 'dashboard']);
 
+    Route::get('teacher/student/list', [TeacherController::class, 'listStudent']);
+    Route::get('teacher/student/add', [TeacherController::class, 'addStudent']);
+    Route::post('teacher/student/add', [TeacherController::class, 'insertStudent']);
+    Route::get('teacher/student/edit/{id}', [TeacherController::class, 'editStudent']);
+    Route::post('teacher/student/edit/{id}', [TeacherController::class, 'updateStudent']);
+    Route::post('teacher/student/delete/{id}', [TeacherController::class, 'delete']);
+
+    Route::get('teacher/result/list', [ResultTeacherController::class, 'listResult']);
+    Route::get('teacher/result/show/{id}', [ResultTeacherController::class, 'showStudentResult']);
+    Route::get('teacher/result/add', [ResultTeacherController::class, 'add']);
+    Route::post('teacher/result/added', [ResultTeacherController::class, 'update']);
+    Route::post('teacher/result/delete/{id}', [ResultTeacherController::class, 'delete']);
+    Route::post('teacher/result/upload', [ResultTeacherController::class, 'upload']);
+
 });
 
 Route::group(['middleware' => 'student'], function (){
 
     Route::get('student/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('student/result', [ResultStudentController::class, 'showResult']);
+
 
 });
  

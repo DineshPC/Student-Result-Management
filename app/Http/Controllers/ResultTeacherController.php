@@ -9,20 +9,20 @@ use App\Models\ClassroomModel;
 use App\Models\User;
 
     
-class ResultController extends Controller
+class ResultTeacherController extends Controller
 {
 
     public function listResult(){
         $data['getRecord'] = User::getStudent();
         $data['resultAvailable'] = ResultModel::findStudent();
-        return view('admin.result.list', $data); 
+        return view('teacher.result.list', $data); 
     }
 
     public function showStudentResult($id){
         $data['getRecord'] = ResultModel::getSingle($id);
         $data['getSubject'] = SubjectModel::getSubjects();
         $data['getUser'] = User::getSingle($id);
-        return view('admin.result.show', $data); 
+        return view('teacher.result.show', $data); 
     }
 
     public function add(){
@@ -30,7 +30,7 @@ class ResultController extends Controller
         $data['getClasses'] = ClassroomModel::getOnlyClass();
         $data['getSubjects'] = SubjectModel::getSubjects();
         $data['getStudent'] = User::getStudent();
-        return view('admin.result.add', $data);
+        return view('teacher.result.add', $data);
     }
     public function update(Request $request){
 
@@ -46,7 +46,7 @@ class ResultController extends Controller
             return redirect()->back()->with('error', "Student result already added.");
         }
         if (($getRecord->class == $classroom) && ($getRecord->id == $student)) {
-            return view('admin.result.result', ['getRecord' => $getRecord , 'getSubjects' => $data['$getSubjects']]);
+            return view('teacher.result.result', ['getRecord' => $getRecord , 'getSubjects' => $data['$getSubjects']]);
         }        
         return abort(404);
     }
@@ -54,7 +54,7 @@ class ResultController extends Controller
     public function delete($id , Request $request){
         $user = ResultModel::getSingle($id);
         if(empty($user)){
-            return false;
+            return redirect()->back()->with('warning', "Successfully Deleted");;
         }
         // dd($user->all());
 
@@ -93,7 +93,7 @@ class ResultController extends Controller
             $result->subject_id = $i + 1 ;
             $result->save();
         }
-        return redirect('admin/result/list')->with('success', "Subject Successfully Created");
+        return redirect('teacher/result/list')->with('success', "Subject Successfully Created");
     }
     
     
