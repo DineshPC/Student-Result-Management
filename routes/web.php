@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\resultController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,14 @@ Route::group(['middleware' => 'admin'], function (){
     Route::get('admin/teacher/edit/{id}', [AdminController::class, 'editTeacher']);
     Route::post('admin/teacher/edit/{id}', [AdminController::class, 'updateTeacher']);
     Route::post('admin/teacher/delete/{id}', [AdminController::class, 'delete']);
+    
+    // admin -> student routes
+    Route::get('admin/student/list', [AdminController::class, 'listStudent']);
+    Route::get('admin/student/add', [AdminController::class, 'addStudent']);
+    Route::post('admin/student/add', [AdminController::class, 'insertStudent']);
+    Route::get('admin/student/edit/{id}', [AdminController::class, 'editStudent']);
+    Route::post('admin/student/edit/{id}', [AdminController::class, 'updateStudent']);
+    Route::post('admin/student/delete/{id}', [AdminController::class, 'delete']);
 
     // admin -> subjects routes
     Route::get('admin/subjects/list', [SubjectController::class, 'list']);
@@ -67,14 +76,16 @@ Route::group(['middleware' => 'admin'], function (){
     Route::post('admin/subjects/edit/{id}', [SubjectController::class, 'update']);
     Route::post('admin/subjects/delete/{id}', [SubjectController::class, 'delete']);
 
-    // admin -> student routes
-    Route::get('admin/student/list', [AdminController::class, 'listStudent']);
-    Route::get('admin/student/add', [AdminController::class, 'addStudent']);
-    Route::post('admin/student/add', [AdminController::class, 'insertStudent']);
-    Route::get('admin/student/edit/{id}', [AdminController::class, 'editStudent']);
-    Route::post('admin/student/edit/{id}', [AdminController::class, 'updateStudent']);
-    Route::post('admin/student/delete/{id}', [AdminController::class, 'delete']);
+    // admin -> results routes
+    Route::get('admin/result/list', [ResultController::class, 'listResult']);
+    Route::get('admin/result/show/{id}', [ResultController::class, 'showStudentResult']);
+    Route::get('admin/result/add', [ResultController::class, 'add']);
+    Route::post('admin/result/added', [ResultController::class, 'update']);
+    Route::post('admin/result/delete/{id}', [ResultController::class, 'delete']);
+    Route::post('admin/result/upload', [ResultController::class, 'upload']);
     
+    
+
 });
 
 Route::group(['middleware' => 'teacher'], function (){

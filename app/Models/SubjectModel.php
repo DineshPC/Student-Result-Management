@@ -20,4 +20,13 @@ class SubjectModel extends Model
     static function getSingle($id){
         return self::find($id);
     }
+
+    static function getAllSubjectOfClass($id){
+        return self::select('subjects.*')
+                    ->where('class', '=', $id)
+                    ->orderBy('id')
+                    ->get();
+                    
+    }
+
 }

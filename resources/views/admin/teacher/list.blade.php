@@ -41,6 +41,7 @@
                         <th>Email</th>
                         <th>Create By</th>
                         <th>Create Date</th>
+                        <th>Last Update</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -52,6 +53,7 @@
                         <td>{{ $value->email }}</td>
                         <td>{{ $value->created_by }}</td>
                         <td>{{ $value->created_at }}</td>
+                        <td>{{ $value->updated_at }}</td>
                         <td>
                           <a href="{{ url('admin/teacher/edit', $value->id) }}" class="btn btn-primary">Edit</a>
                           <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm-{{ $value->id }}').submit();" class="btn btn-danger">Delete</a>
