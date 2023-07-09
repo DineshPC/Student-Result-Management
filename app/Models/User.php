@@ -51,7 +51,7 @@ class User extends Authenticatable
     static function getStudent(){
         return self::select('users.*')
                         ->where('user_type', '=', '3')
-                        ->orderBy('id')
+                        ->orderBy('id', 'desc')
                         ->paginate(10);
     }
 
@@ -62,6 +62,12 @@ class User extends Authenticatable
     static function checkEmailExists($email){
         $existOrNot = self::where('email', $email)->first();
         return !is_null($existOrNot); // Returns true if email exists, false otherwise
+    }
+
+    static function getUserId($name){
+        return self::select('users.*')
+                    ->where('name', '=', $name)
+                    ->get();
     }
 
     /**

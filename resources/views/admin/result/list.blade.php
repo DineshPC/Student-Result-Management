@@ -10,10 +10,10 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Student List</h1>
+            <h1>Students Result</h1>
           </div>
           <div class="col-sm-6" style="text-align : right;">
-            <a href=" {{ url('admin/student/add')}} " class="btn btn-primary">Add New Student</a>
+            <a href=" {{ url('admin/result/add')}} " class="btn btn-primary">Add Result</a>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -42,37 +42,35 @@
                         <th>Class</th>
                         <th>Create By</th>
                         <th>Create Date</th>
-                        <th>Last Update</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach($getRecord as $value)
-                      <tr>
-                        <td>{{ $value->id }}</td>
-                        <td>{{ $value->name }}</td>
-                        <td>{{ $value->email }}</td>
-                        <td>{{ $value->class }}</td>
-                        <td>{{ $value->created_by }}</td>
-                        <td>{{ $value->created_at }}</td>
-                        <td>{{ $value->updated_at }}</td>
-                        <td>
-                          <a href="{{ url('admin/student/edit', $value->id) }}" class="btn btn-primary">Edit</a>
-                          @if($value->email !== Auth::user()->email)
-                          <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm-{{ $value->id }}').submit();" class="btn btn-danger">Delete</a>
-                          <form id="deleteForm-{{ $value->id }}" action="{{ url('admin/student/delete', $value->id) }}" method="POST" style="display: none;">
-                            @csrf
-                          </form>
-                          @endif
-                        </td>
-                      </tr>
+                        @if($resultAvailable->contains('student_id', $value->id))
+                          <tr>
+                            <td>{{ $value->id }}</td>
+                            <td>{{ $value->name }}</td>
+                            <td>{{ $value->email }}</td>
+                            <td>{{ $value->class }}</td>
+                            <td>{{ $value->created_by }}</td>
+                            <td>{{ $value->created_at }}</td>
+                            <td>
+                              <a href="{{ url('admin/result/show', $value->id) }}" class="btn btn-primary">Show Result</a>
+                              <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm-{{ $value->id }}').submit();" class="btn btn-danger">Delete Result</a>
+                              <form id="deleteForm-{{ $value->id }}" action="{{ url('admin/result/delete', $value->id) }}" method="POST" style="display: none;">
+                                @csrf
+                              </form>
+                            </td>
+                          </tr>
+                        @endif
                       @endforeach
                     </tbody>
                   </table>
                 </div>
-                <div style="float: right;" class="py-0 px-3">
+                <!-- <div style="float: right;" class="py-0 px-3">
                   {!! $getRecord->appends(Request::except('page'))->links() !!}
-                </div>
+                </div> -->
               </div>
               <!-- /.card-body -->
             </div>

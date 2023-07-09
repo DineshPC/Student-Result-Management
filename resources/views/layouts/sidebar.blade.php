@@ -46,6 +46,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{URL('admin/student/list')}}" class="nav-link @if(Request::segment(2) == 'student') active @endif">
+              <i class="nav-icon fas fa-user-circle "></i>  
+              <p>
+                Student
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{URL('admin/classroom/list')}}" class="nav-link @if(Request::segment(2) == 'classroom') active @endif">
               <i class="nav-icon fas fa-user-circle "></i>  
               <p>
@@ -62,10 +70,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{URL('admin/student/list')}}" class="nav-link @if(Request::segment(2) == 'student') active @endif">
-              <i class="nav-icon fas fa-user-circle "></i>  
+            <a href="{{URL('admin/result/list')}}" class="nav-link @if(Request::segment(2) == 'result') active @endif">
+              <i class="nav-icon fas fa-user-circle "></i>
               <p>
-                Student
+                Result
               </p>
             </a>
           </li>
@@ -91,7 +99,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/kanban.html" class="nav-link">
+          <a href="{{URL('teacher/student/list')}}" class="nav-link @if(Request::segment(2) == 'student') active @endif">
               <i class="nav-icon fas fa-user-circle "></i>
               <p>
                 student
@@ -99,7 +107,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/kanban.html" class="nav-link">
+          <a href="{{URL('teacher/result/list')}}" class="nav-link @if(Request::segment(2) == 'result') active @endif">
               <i class="nav-icon fas fa-user-circle "></i>
               <p>
                 Results
@@ -127,7 +135,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/kanban.html" class="nav-link">
+          <a href="{{URL('student/result')}}" class="nav-link @if(Request::segment(2) == 'result') active @endif">
               <i class="nav-icon fas fa-user-circle "></i>
               <p>
                 Results
@@ -142,11 +150,7 @@
               </p>
             </a>
           </li>
-
-
           @endif
-
-          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

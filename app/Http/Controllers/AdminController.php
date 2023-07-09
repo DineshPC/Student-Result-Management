@@ -36,7 +36,6 @@ class AdminController extends Controller
     }
 
     public function addStudent(){
-
         $data['getClasses'] = ClassroomModel::getOnlyClass();
         return view('admin.student.add', $data);
     }

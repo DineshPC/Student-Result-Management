@@ -32,36 +32,43 @@
 
                 <!-- /.card-header -->
               <div class="card-body p-0">
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>id</th>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Create By</th>
-                      <th>Create Date</th>
-                      <th>Action</th>
-                    </tr>
-                    <tbody>
-                    @foreach($getRecord as $value)
-                    <tr>
-                      <td>{{ $value->id }}</td>
-                      <td>{{ $value->name }}</td>
-                      <td>{{ $value->email }}</td>
-                      <td>{{ $value->created_by }}</td>
-                      <td>{{ $value->created_at }}</td>
-                      <td>
-                        <a href="{{ url('admin/teacher/edit', $value->id) }}" class="btn btn-primary">Edit</a>
-                        <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm-{{ $value->id }}').submit();" class="btn btn-danger">Delete</a>
-                        <form id="deleteForm-{{ $value->id }}" action="{{ url('admin/teacher/delete', $value->id) }}" method="POST" style="display: none;">
-                            @csrf
-                          </form>
-                      </td>
-                    </tr>   
-                    @endforeach
-                  </tbody>
-                </table>
-
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Create By</th>
+                        <th>Create Date</th>
+                        <th>Last Update</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                      <tbody>
+                      @foreach($getRecord as $value)
+                      <tr>
+                        <td>{{ $value->id }}</td>
+                        <td>{{ $value->name }}</td>
+                        <td>{{ $value->email }}</td>
+                        <td>{{ $value->created_by }}</td>
+                        <td>{{ $value->created_at }}</td>
+                        <td>{{ $value->updated_at }}</td>
+                        <td>
+                          <a href="{{ url('admin/teacher/edit', $value->id) }}" class="btn btn-primary">Edit</a>
+                          <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm-{{ $value->id }}').submit();" class="btn btn-danger">Delete</a>
+                          <form id="deleteForm-{{ $value->id }}" action="{{ url('admin/teacher/delete', $value->id) }}" method="POST" style="display: none;">
+                              @csrf
+                            </form>
+                        </td>
+                      </tr>   
+                      @endforeach
+                    </tbody>
+                  </table>
+                  <div style="float: right;" class="py-0 px-3">
+                    {!! $getRecord->appends(Request::except('page'))->links() !!}
+                  </div>
+                </div>
               </div>
               <!-- /.card-body -->
             </div>
