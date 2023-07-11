@@ -20,8 +20,8 @@ class ResultTeacherController extends Controller
 
     public function showStudentResult($id){
         $data['getRecord'] = ResultModel::getSingle($id);
-        $data['getSubject'] = SubjectModel::getSubjects();
         $data['getUser'] = User::getSingle($id);
+        $data['getSubject'] = SubjectModel::getAllSubjectOfClass($data['getUser']->class);
         return view('teacher.result.show', $data); 
     }
 
