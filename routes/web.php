@@ -10,6 +10,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\ResultTeacherController;
 use App\Http\Controllers\ResultStudentController;
+use App\Http\Controllers\ExamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,6 +87,12 @@ Route::group(['middleware' => 'admin'], function (){
     Route::post('admin/result/added', [ResultController::class, 'update']);
     Route::post('admin/result/delete/{id}', [ResultController::class, 'delete']);
     Route::post('admin/result/upload', [ResultController::class, 'upload']);
+
+    // admin -> exam routes
+    Route::get('admin/exam/list', [ExamController::class, 'list']);
+    Route::get('admin/exam/add', [ExamController::class, 'add']);
+    Route::post('admin/exam/add', [ExamController::class, 'insert']);
+    Route::post('admin/exam/delete/{id}', [ExamController::class, 'delete']);
     
     
 
