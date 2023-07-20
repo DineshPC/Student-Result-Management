@@ -85,6 +85,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{URL('admin/exam/list')}}" class="nav-link @if(Request::segment(2) == 'exam') active @endif">
+              <i class="nav-icon fas fa-power-off"></i>
+              <p>
+                Exam    
+              </p>
+            </a>
+          </li>
 
 
           @elseif(Auth::user()->user_type==2)
