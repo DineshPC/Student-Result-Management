@@ -67,3 +67,23 @@ php artisan serve
 
 
 ### now we connect to backend server 
+8. Start XAMPP server and start Apache and MySQL services for backends
+
+8. Go to [http://localhost/phpmyadmin/]
+
+10. create database SRM (can be any name)
+
+11. now import SRM.sql file to your SRM database. (go to database SRM -> click import -> select SRM.sql file provided -> Done)
+
+12. change .env variable DB_DATABASE=laravel to DB_DATABASE=SRM
+
+13. all done. 
+- now make sure you already run php artisan server command above
+
+### Username and password
+
+- passwords are stored in the database users in hash format 
+- Admin - username : <a name="admin">admin@admin.com</a> , password - 123456 ;
+- Teacher - username : teacher@gmail.com , password - 123456 ;
+- Student - username : student@gmail.com , password - 123456 ;
+
