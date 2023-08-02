@@ -82,8 +82,9 @@ php artisan serve
 
 ### Username and password
 
-- passwords are stored in the database users in hash format 
-- Admin - username : <a name="admin">admin@admin.com</a> , password - 123456 ;
+- passwords are stored in the users table in hash format 
+- Admin - username : admin@admin.com , password - 123456 ;
 - Teacher - username : teacher@gmail.com , password - 123456 ;
 - Student - username : student@gmail.com , password - 123456 ;
+
 
